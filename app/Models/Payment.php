@@ -14,6 +14,7 @@ class Payment extends Model
         'registration_id',
         'payment_method',
         'amount',
+        'account_name',
         'payment_code',
         'proof_file_path',
         'status',
@@ -226,4 +227,21 @@ class Payment extends Model
     {
         return !empty($this->proof_file_path);
     }
-}
+
+    /**
+     * Accessor alias for front-end compatibility: proof_path -> proof_file_path
+     */
+    public function getProofPathAttribute()
+    {
+        return $this->proof_file_path;
+    }
+
+    /**
+     * Accessor alias for front-end compatibility: payment_date -> paid_at
+     * Returns Carbon instance (serialized to ISO string by Eloquent)
+     */
+    public function getPaymentDateAttribute()
+    {
+        return $this->paid_at;
+    }
+} 

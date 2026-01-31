@@ -1,4 +1,4 @@
-export default function LandinPage() {
+export default function LandingPage() {
     return (
         <>
         Halo PMB

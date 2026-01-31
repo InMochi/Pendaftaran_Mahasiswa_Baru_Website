@@ -10,6 +10,8 @@ class Biodata extends Model
 {
     use HasFactory;
 
+    protected $table = 'biodata';
+
     protected $fillable = [
         'registration_id',
         'full_name',

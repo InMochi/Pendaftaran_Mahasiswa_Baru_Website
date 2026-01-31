@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('registration_id')->constrained()->onDelete('cascade');
             $table->enum('payment_method', ['bank_transfer', 'ewallet', 'virtual_account']);
             $table->decimal('amount', 10, 2);
+            $table->string('account_name')->nullable();
             $table->string('payment_code')->unique(); // Kode pembayaran unik
             $table->string('proof_file_path')->nullable(); // Bukti transfer
             $table->enum('status', ['pending', 'verified', 'rejected'])->default('pending');
