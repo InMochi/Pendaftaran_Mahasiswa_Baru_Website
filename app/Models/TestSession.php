@@ -106,6 +106,7 @@ class TestSession extends Model
         ]);
 
         $this->calculateTotalScore();
+        $this->calculateCategoryScores(); 
     }
 
     /**
@@ -178,7 +179,11 @@ class TestSession extends Model
     /**
      * Get formatted time elapsed
      */
-    public function getFormattedTimeElapsed(): string
+    protected $appends = [
+    'formatted_time_elapsed',
+    ];
+    
+    public function getFormattedTimeElapsedAttribute(): string
     {
         $seconds = $this->getTimeElapsed();
         $hours = floor($seconds / 3600);

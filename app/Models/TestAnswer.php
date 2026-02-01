@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\TestQuestion;
 
 class TestAnswer extends Model
 {
@@ -61,7 +62,7 @@ class TestAnswer extends Model
      */
     public function checkAnswer(): void
     {
-        $question = $this->testQuestion;
+        $question = TestQuestion::find($this->test_question_id);
 
         if (!$question) {
             return;

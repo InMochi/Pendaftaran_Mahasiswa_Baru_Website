@@ -6,9 +6,13 @@ use App\Http\Controllers\Admin\StudyProgramController;
 use App\Http\Controllers\Admin\RegistrationPeriodController;
 use App\Http\Controllers\Admin\TestCategoryController;
 use App\Http\Controllers\Admin\TestQuestionController;
+use App\Http\Controllers\Admin\AnnouncementController as AdminAnnouncementController;
 use App\Http\Controllers\Admin\PaymentController as AdminPaymentController;
+use App\Http\Controllers\User\AnnouncementController;
 use App\Http\Controllers\User\RegistrationController;
 use App\Http\Controllers\User\PaymentController;
+use App\Http\Controllers\User\TestController;
+
 
 
 
@@ -74,7 +78,15 @@ Route::middleware(['auth', 'role:admin'])
     Route::get('/payments', [AdminPaymentController::class, 'index'])->name('payments.index');
     Route::post('/payments/{payment}/verify', [AdminPaymentController::class, 'verify'])->name('payments.verify');
     Route::post('/payments/{payment}/reject', [AdminPaymentController::class, 'reject'])->name('payments.reject');
-    });
+
+    // Announcement Management
+    Route::get('/announcements', [AdminAnnouncementController::class, 'index'])->name('announcements.index');
+    Route::post('/announcements/generate', [AdminAnnouncementController::class, 'generate'])->name('announcements.generate');
+    Route::put('/announcements/{announcement}', [AdminAnnouncementController::class, 'update'])->name('announcements.update');
+    Route::delete('/announcements/{announcement}', [AdminAnnouncementController::class, 'destroy'])->name('announcements.destroy');
+});
+ 
+
 
 
     Route::middleware(['auth', 'role:user'])->group(function () {
@@ -113,6 +125,18 @@ Route::middleware(['auth', 'role:admin'])
         Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
         Route::post('/payment', [PaymentController::class, 'store'])->name('payment.store');
         });
+
+
+        // Test
+        Route::get('/test', [TestController::class, 'index'])->name('test.index');
+        Route::post('/test/start', [TestController::class, 'start'])->name('test.start');
+        Route::get('/test/take', [TestController::class, 'take'])->name('test.take');
+        Route::post('/test/answer', [TestController::class, 'answer'])->name('test.answer');
+        Route::post('/test/submit', [TestController::class, 'submit'])->name('test.submit');
+        Route::get('/test/result', [TestController::class, 'result'])->name('test.result');
+
+        Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement.index');
+        Route::post('/announcement/re-register', [AnnouncementController::class, 'reRegister'])->name('announcement.re-register');
     });
 
     // Public Routes

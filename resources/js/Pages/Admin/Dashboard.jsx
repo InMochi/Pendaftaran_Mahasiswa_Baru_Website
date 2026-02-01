@@ -83,11 +83,11 @@ export default function AdminDashboard() {
         },
         {
             title: 'Pengumuman Hasil',
-            description: 'Kelola pengumuman hasil seleksi',
-            href: null,
+            description: 'Generate dan kelola pengumuman hasil seleksi',
+            href: '/admin/announcements',
             iconBg: 'bg-blue-100',
             iconColor: 'text-blue-600',
-            btnColor: null,
+            btnColor: 'bg-blue-600 hover:bg-blue-700',
             icon: (
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
@@ -150,15 +150,9 @@ export default function AdminDashboard() {
                                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{card.title}</h3>
                                 <p className="text-gray-600 text-sm mb-4 flex-1">{card.description}</p>
 
-                                {card.href ? (
-                                    <Link href={card.href} className={`w-full text-center px-4 py-2 text-white text-sm font-medium rounded-lg transition ${card.btnColor}`}>
-                                        Kelola
-                                    </Link>
-                                ) : (
-                                    <button disabled className="w-full px-4 py-2 bg-gray-200 text-gray-400 text-sm font-medium rounded-lg cursor-not-allowed">
-                                        Belum Tersedia
-                                    </button>
-                                )}
+                                <Link href={card.href} className={`w-full text-center px-4 py-2 text-white text-sm font-medium rounded-lg transition ${card.btnColor}`}>
+                                    Kelola
+                                </Link>
                             </div>
                         ))}
                     </div>

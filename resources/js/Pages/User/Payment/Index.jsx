@@ -148,7 +148,7 @@ export default function PaymentIndex({ registration, payment }) {
                                     <img
                                         src={`/storage/${payment.proof_file_path}`}
                                         alt="Bukti Pembayaran"
-                                        className="w-full max-w-md mx-auto rounded-lg shadow-md"
+                                        className="w-full max-h-64 object-contain rounded-lg shadow-md"
                                     />
                                 )}
                             </div>
@@ -197,7 +197,6 @@ export default function PaymentIndex({ registration, payment }) {
                                         <input
                                             type="text"
                                             inputMode="numeric"
-                                            value={formatRupiah(form.amount)}
                                             onChange={handleAmountChange}
                                             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                                             placeholder="200.000"

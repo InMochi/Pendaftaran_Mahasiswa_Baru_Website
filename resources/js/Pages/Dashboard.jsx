@@ -72,7 +72,9 @@ export default function Dashboard() {
                             </div>
                             <h3 className="text-lg font-semibold text-gray-900 mb-2">Test Online</h3>
                             <p className="text-gray-600 text-sm mb-4">Ikuti tes seleksi online</p>
-                            <button className="px-4 py-2 bg-gray-300 text-gray-700 text-sm font-medium rounded-lg cursor-not-allowed">Belum Tersedia</button>
+                            <Link href="/test" className="inline-block px-4 py-2 bg-purple-600 text-white text-sm font-medium rounded-lg hover:bg-purple-700 transition">
+                                Mulai Tes
+                            </Link>
                         </div>
 
                         <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition p-6">
@@ -83,7 +85,9 @@ export default function Dashboard() {
                             </div>
                             <h3 className="text-lg font-semibold text-gray-900 mb-2">Pengumuman</h3>
                             <p className="text-gray-600 text-sm mb-4">Lihat hasil seleksi penerimaan</p>
-                            <button className="px-4 py-2 bg-gray-300 text-gray-700 text-sm font-medium rounded-lg cursor-not-allowed">Belum Tersedia</button>
+                            <Link href="/announcement" className="inline-block px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition">
+                                Lihat Hasil
+                            </Link>
                         </div>
 
                         <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition p-6">
@@ -97,7 +101,7 @@ export default function Dashboard() {
                             <button className="px-4 py-2 bg-gray-300 text-gray-700 text-sm font-medium rounded-lg cursor-not-allowed">Belum Tersedia</button>
                         </div>
 
-                        <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl shadow-md p-6 border border-indigo-100">
+                        <div className="bg-linear-to-br from-indigo-50 to-purple-50 rounded-xl shadow-md p-6 border border-indigo-100">
                             <div className="flex items-center justify-center w-12 h-12 bg-indigo-600 rounded-full mb-4">
                                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -110,7 +114,7 @@ export default function Dashboard() {
                                 3. Upload dokumen<br />
                                 4. Bayar<br />
                                 5. Ikuti tes<br />
-                                6. Tunggu pengumuman
+                                6. Lihat pengumuman
                             </p>
                         </div>
                     </div>
