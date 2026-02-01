@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use App\Models\ReRegistration;
 
 class Registration extends Model
 {
@@ -279,4 +280,11 @@ class Registration extends Model
     {
         return $this->studyProgramChoices()->where('priority', 1)->first();
     }
+
+    public function reRegistration()
+    {
+        return $this->hasOne(ReRegistration::class);
+    }
+
+    
 }

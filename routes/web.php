@@ -8,10 +8,12 @@ use App\Http\Controllers\Admin\TestCategoryController;
 use App\Http\Controllers\Admin\TestQuestionController;
 use App\Http\Controllers\Admin\AnnouncementController as AdminAnnouncementController;
 use App\Http\Controllers\Admin\PaymentController as AdminPaymentController;
+use App\Http\Controllers\Admin\ReRegistrationController as AdminReRegistrationController;
 use App\Http\Controllers\User\AnnouncementController;
 use App\Http\Controllers\User\RegistrationController;
 use App\Http\Controllers\User\PaymentController;
 use App\Http\Controllers\User\TestController;
+use App\Http\Controllers\User\ReRegistrationController;
 
 
 
@@ -84,6 +86,10 @@ Route::middleware(['auth', 'role:admin'])
     Route::post('/announcements/generate', [AdminAnnouncementController::class, 'generate'])->name('announcements.generate');
     Route::put('/announcements/{announcement}', [AdminAnnouncementController::class, 'update'])->name('announcements.update');
     Route::delete('/announcements/{announcement}', [AdminAnnouncementController::class, 'destroy'])->name('announcements.destroy');
+
+    Route::get('/re-registrations', [AdminReRegistrationController::class, 'index'])->name('re-registrations.index');
+    Route::post('/re-registrations/{reRegistration}/verify', [AdminReRegistrationController::class, 'verify'])->name('re-registrations.verify');
+    Route::post('/re-registrations/{reRegistration}/reject', [AdminReRegistrationController::class, 'reject'])->name('re-registrations.reject');
 });
  
 
@@ -137,6 +143,12 @@ Route::middleware(['auth', 'role:admin'])
 
         Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement.index');
         Route::post('/announcement/re-register', [AnnouncementController::class, 'reRegister'])->name('announcement.re-register');
+
+        Route::get('/re-registration', [ReRegistrationController::class, 'index'])->name('re-registration.index');
+        Route::post('/re-registration/create', [ReRegistrationController::class, 'create'])->name('re-registration.create');
+        Route::post('/re-registration/upload', [ReRegistrationController::class, 'uploadDocument'])->name('re-registration.upload');
+        Route::post('/re-registration/submit', [ReRegistrationController::class, 'submit'])->name('re-registration.submit');
+        Route::get('/re-registration/print-letter', [ReRegistrationController::class, 'printLetter'])->name('re-registration.print-letter');
     });
 
     // Public Routes

@@ -4,6 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Registration;
+use App\Models\Document;
+
+
+
 
 class ReRegistration extends Model
 {
@@ -11,6 +16,7 @@ class ReRegistration extends Model
 
     protected $fillable = [
         'announcement_id',
+        'registration_id',
         'status',
         'completed_at',
     ];
@@ -111,4 +117,19 @@ class ReRegistration extends Model
             default => 'gray',
         };
     }
+
+    public function registration()
+    {
+        return $this->belongsTo(Registration::class);
+    }
+
+    public function documents()
+    {
+        return $this->hasMany(Document::class, 'registration_id', 'registration_id');
+    }
+    public function getDocumentsByTypeAttribute()
+    {
+        return $this->documents->keyBy('document_type');
+    }
+
 }

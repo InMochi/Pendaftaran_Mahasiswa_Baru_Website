@@ -14,7 +14,11 @@ return new class extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->foreignId('registration_id')->constrained()->onDelete('cascade');
-            $table->enum('document_type', ['ktp', 'ijazah', 'foto', 'raport', 'sertifikat']);
+            $table->foreignId('re_registration_id')
+            ->nullable()
+            ->constrained()
+            ->cascadeOnDelete();
+            $table->string('document_type'); 
             $table->string('file_name');
             $table->string('file_path');
             $table->integer('file_size')->unsigned(); // dalam bytes

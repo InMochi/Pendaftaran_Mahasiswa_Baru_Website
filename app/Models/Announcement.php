@@ -187,4 +187,9 @@ class Announcement extends Model
         // TODO: Implement email/SMS notification
         // This would typically use Laravel's notification system
     }
+
+    public function study_program()
+    {
+        return $this->belongsTo(\App\Models\StudyProgram::class, 'study_program_id');
+    }
 }

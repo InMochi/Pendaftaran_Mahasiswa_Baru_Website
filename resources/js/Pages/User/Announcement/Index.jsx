@@ -9,7 +9,7 @@ export default function AnnouncementIndex({ registration, announcement, reRegist
             alert('Centang konfirmasi terlebih dahulu!');
             return;
         }
-        router.post('/announcement/re-register', { confirm: true });
+        router.post('/re-registration', { confirm: true });
     };
 
     const statusConfig = {

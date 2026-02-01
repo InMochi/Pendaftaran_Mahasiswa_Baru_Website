@@ -151,4 +151,9 @@ class Document extends Model
             $document->deleteFile();
         });
     }
+
+    public function reRegistration()
+    {
+        return $this->belongsTo(ReRegistration::class);
+    }
 }

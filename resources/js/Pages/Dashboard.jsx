@@ -38,6 +38,7 @@ export default function Dashboard() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {/* Pendaftaran */}
                         <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition p-6">
                             <div className="flex items-center justify-center w-12 h-12 bg-indigo-100 rounded-full mb-4">
                                 <svg className="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -51,6 +52,7 @@ export default function Dashboard() {
                             </Link>
                         </div>
 
+                        {/* Pembayaran */}
                         <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition p-6">
                             <div className="flex items-center justify-center w-12 h-12 bg-yellow-100 rounded-full mb-4">
                                 <svg className="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -64,6 +66,7 @@ export default function Dashboard() {
                             </Link>
                         </div>
 
+                        {/* Test Online */}
                         <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition p-6">
                             <div className="flex items-center justify-center w-12 h-12 bg-purple-100 rounded-full mb-4">
                                 <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,6 +80,7 @@ export default function Dashboard() {
                             </Link>
                         </div>
 
+                        {/* Pengumuman */}
                         <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition p-6">
                             <div className="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-full mb-4">
                                 <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -90,31 +94,36 @@ export default function Dashboard() {
                             </Link>
                         </div>
 
+                        {/* Daftar Ulang - NEW! */}
                         <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition p-6">
-                            <div className="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-full mb-4">
-                                <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            <div className="flex items-center justify-center w-12 h-12 bg-green-100 rounded-full mb-4">
+                                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                             </div>
-                            <h3 className="text-lg font-semibold text-gray-900 mb-2">Profil Saya</h3>
-                            <p className="text-gray-600 text-sm mb-4">Kelola informasi akun Anda</p>
-                            <button className="px-4 py-2 bg-gray-300 text-gray-700 text-sm font-medium rounded-lg cursor-not-allowed">Belum Tersedia</button>
+                            <h3 className="text-lg font-semibold text-gray-900 mb-2">Daftar Ulang</h3>
+                            <p className="text-gray-600 text-sm mb-4">Konfirmasi kehadiran & upload dokumen</p>
+                            <Link href="/re-registration" className="inline-block px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-lg hover:bg-green-700 transition">
+                                Daftar Ulang
+                            </Link>
                         </div>
 
+                        {/* Info Card */}
                         <div className="bg-linear-to-br from-indigo-50 to-purple-50 rounded-xl shadow-md p-6 border border-indigo-100">
                             <div className="flex items-center justify-center w-12 h-12 bg-indigo-600 rounded-full mb-4">
                                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                             </div>
-                            <h3 className="text-lg font-semibold text-gray-900 mb-2">Alur Pendaftaran</h3>
-                            <p className="text-gray-700 text-sm">
+                            <h3 className="text-lg font-semibold text-gray-900 mb-2">Alur Lengkap</h3>
+                            <p className="text-gray-700 text-sm leading-relaxed">
                                 1. Isi biodata<br />
                                 2. Pilih prodi<br />
                                 3. Upload dokumen<br />
                                 4. Bayar<br />
                                 5. Ikuti tes<br />
-                                6. Lihat pengumuman
+                                6. Lihat pengumuman<br />
+                                7. <strong>Daftar ulang</strong> 🎉
                             </p>
                         </div>
                     </div>
