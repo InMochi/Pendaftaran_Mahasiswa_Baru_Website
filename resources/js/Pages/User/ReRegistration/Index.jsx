@@ -61,8 +61,6 @@ export default function ReRegistrationIndex({ registration, announcement, reRegi
     };
 
     const getDocument = (type) => {
-        // Sesuaikan 'document_type' karena di database/controller kamu 
-        // menggunakan nama kolom 'document_type', bukan 'type'
         return reRegistration?.documents?.find(d => d.document_type === type);
     };
 
@@ -79,7 +77,7 @@ export default function ReRegistrationIndex({ registration, announcement, reRegi
         return (
             <>
                 <Head title="Daftar Ulang" />
-                <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+                <div className="min-h-screen bg-linear-to-br from-blue-50 via-indigo-50 to-purple-50">
                     <header className="bg-white shadow-sm border-b border-gray-100">
                         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                             <div className="flex items-center justify-between">
@@ -129,7 +127,7 @@ export default function ReRegistrationIndex({ registration, announcement, reRegi
     return (
         <>
             <Head title="Daftar Ulang" />
-            <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+            <div className="min-h-screen bg-linear-to-br from-blue-50 via-indigo-50 to-purple-50">
                 <header className="bg-white shadow-sm border-b border-gray-100">
                     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                         <div className="flex items-center justify-between">
