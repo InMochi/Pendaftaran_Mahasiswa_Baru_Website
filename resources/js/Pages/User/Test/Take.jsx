@@ -142,7 +142,7 @@ export default function TestTake({ registration, testSession, questions, answers
                         {/* Progress Bar */}
                         <div className="w-full bg-gray-200 rounded-full h-2 mt-3">
                             <div
-                                className="bg-gradient-to-r from-indigo-500 to-purple-500 h-2 rounded-full transition-all"
+                                className="bg-linear-to-r from-indigo-500 to-purple-500 h-2 rounded-full transition-all"
                                 style={{ width: `${progressPercentage}%` }}
                             />
                         </div>

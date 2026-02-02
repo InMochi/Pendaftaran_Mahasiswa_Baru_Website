@@ -43,7 +43,7 @@ export default function Login() {
                     {/* Header */}
                     <div className="text-center">
                         <h2 className="text-4xl font-extrabold text-gray-900">
-                            PMB System
+                            PMB Orbyte System
                         </h2>
                         <p className="mt-2 text-sm text-gray-600">
                             Masuk ke akun Anda

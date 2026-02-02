@@ -24,9 +24,9 @@ export default function Letter({ registration, announcement, reRegistration }) {
             <div className="min-h-screen bg-white p-8 max-w-4xl mx-auto">
                 {/* Header */}
                 <div className="text-center border-b-4 border-indigo-600 pb-6 mb-8">
-                    <h1 className="text-2xl font-bold text-gray-900 mb-1">UNIVERSITAS PMB</h1>
+                    <h1 className="text-2xl font-bold text-gray-900 mb-1">Orbyte University</h1>
                     <p className="text-sm text-gray-600">Jl. Pendidikan No. 123, Jakarta 12345</p>
-                    <p className="text-sm text-gray-600">Telp: (021) 1234567 | Email: info@pmb.ac.id</p>
+                    <p className="text-sm text-gray-600">Telp: (021) 1234567 | Orbyte@University.ac.id</p>
                 </div>
 
                 {/* Letter number */}
@@ -53,7 +53,7 @@ export default function Letter({ registration, announcement, reRegistration }) {
 
                     <p className="mb-4">Dengan hormat,</p>
                     <p className="mb-4 text-justify">
-                        Berdasarkan hasil seleksi Penerimaan Mahasiswa Baru (PMB) Tahun Akademik {new Date().getFullYear()}/{new Date().getFullYear() + 1}, 
+                        Berdasarkan hasil seleksi Penerimaan MahaOrbyte University) Tahun Akademik {new Date().getFullYear()}/{new Date().getFullYear() + 1}, 
                         dengan ini kami umumkan bahwa:
                     </p>
 
@@ -106,7 +106,7 @@ export default function Letter({ registration, announcement, reRegistration }) {
                 <div className="flex justify-between items-end mt-12">
                     <div className="text-center">
                         <p className="text-sm mb-16">Mengetahui,</p>
-                        <p className="text-sm font-bold">Ketua Panitia PMB</p>
+                        <p className="text-sm font-bold">KeOrbyte University</p>
                         <p className="text-sm mt-8 border-t border-gray-400 pt-1 inline-block px-8">
                             Dr. Tony Felicio Farrel, M.Pd
                         </p>
@@ -114,7 +114,7 @@ export default function Letter({ registration, announcement, reRegistration }) {
 
                     <div className="text-center">
                         <p className="text-sm mb-1">Jakarta, {new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
-                        <p className="text-sm mb-16">Rektor Universitas PMB</p>
+                        <p className="text-sm mb-16">Rektor Orbyte University</p>
                         <p className="text-sm font-bold mt-8 border-t border-gray-400 pt-1 inline-block px-8">
                             Prof. Dr. Hafizh Pratama, M.Sc
                         </p>

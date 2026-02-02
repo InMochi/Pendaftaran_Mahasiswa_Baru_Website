@@ -24,7 +24,7 @@ class TestQuestionSeeder extends Seeder
                 'option_d' => '210',
                 'option_e' => '225',
                 'correct_answer' => 'b',
-                'points' => 5,
+                'points' => 10,
                 'is_active' => true,
             ],
             [
@@ -37,7 +37,7 @@ class TestQuestionSeeder extends Seeder
                 'option_d' => '8',
                 'option_e' => '9',
                 'correct_answer' => 'c',
-                'points' => 5,
+                'points' => 10,
                 'is_active' => true,
             ],
             [
@@ -50,7 +50,7 @@ class TestQuestionSeeder extends Seeder
                 'option_d' => '72 cm²',
                 'option_e' => '80 cm²',
                 'correct_answer' => 'c',
-                'points' => 5,
+                'points' => 10,
                 'is_active' => true,
             ],
         ];
@@ -67,7 +67,7 @@ class TestQuestionSeeder extends Seeder
                 'option_d' => 'gone',
                 'option_e' => 'went',
                 'correct_answer' => 'b',
-                'points' => 5,
+                'points' => 10,
                 'is_active' => true,
             ],
             [
@@ -80,7 +80,7 @@ class TestQuestionSeeder extends Seeder
                 'option_d' => 'Tired',
                 'option_e' => 'Hungry',
                 'correct_answer' => 'c',
-                'points' => 5,
+                'points' => 10,
                 'is_active' => true,
             ],
         ];

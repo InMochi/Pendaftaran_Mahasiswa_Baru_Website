@@ -98,7 +98,7 @@ export default function PaymentIndex({ registration, payment }) {
                             <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
                                 <p className="font-bold text-lg">Bank Mandiri</p>
                                 <p className="font-mono text-xl">1234567890</p>
-                                <p className="text-sm opacity-90">a.n. Universitas PMB</p>
+                                <p className="text-sm opacity-90">a.n. Universitas Orbyte</p>
                             </div>
                         </div>
                     </div>

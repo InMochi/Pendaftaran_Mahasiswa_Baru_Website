@@ -9,10 +9,10 @@ export default function AnnouncementIndex({ registration, announcement, reRegist
             alert('Centang konfirmasi terlebih dahulu!');
             return;
         }
-        router.post('/re-registration', { confirm: true });
+        router.post('/announcement/re-register', { confirm: true });
     };
 
-    const statusConfig = {
+    const statusConfig = {  
         accepted: {
             bg: 'from-green-500 to-emerald-600',
             icon: '🎉',
@@ -174,7 +174,7 @@ export default function AnnouncementIndex({ registration, announcement, reRegist
                     <div className="bg-linear-to-r from-indigo-50 to-purple-50 rounded-2xl border border-indigo-100 p-6 mt-6">
                         <h3 className="font-bold text-gray-900 mb-2">Butuh Bantuan?</h3>
                         <p className="text-sm text-gray-700">
-                            Hubungi panitia PMB melalui email: <a href="mailto:pmb@university.ac.id" className="text-indigo-600 font-semibold">pmb@university.ac.id</a>
+                            Hubungi panitia Orbyte melalui email: <a href="mailto:Orbyte@university.ac.id" className="text-indigo-600 font-semibold">Orbyte@university.ac.id</a>
                         </p>
                     </div>
                 </main>

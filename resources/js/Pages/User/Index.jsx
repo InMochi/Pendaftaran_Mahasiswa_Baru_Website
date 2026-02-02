@@ -33,8 +33,8 @@ export default function RegistrationIndex({ registration, activePeriod, completi
                 <div className="min-h-screen bg-linear-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center p-4">
                     <div className="max-w-2xl w-full bg-white rounded-2xl shadow-xl p-8">
                         <div className="text-center mb-8">
-                            <h1 className="text-3xl font-bold text-gray-900 mb-2">Selamat Datang di PMB {activePeriod.academic_year}</h1>
-                            <p className="text-gray-600">{activePeriod.name}</p>
+                            <h1 className="text-3xl font-bold text-gray-900 mb-2">Selamat Datang di PMB Orbyte {activePeriod.academic_year}</h1>
+                            <p className="text-gray-600 font-bold">{activePeriod.name}</p>
                         </div>
 
                         <div className="bg-linear-to-r from-indigo-50 to-purple-50 rounded-xl p-6 mb-6">

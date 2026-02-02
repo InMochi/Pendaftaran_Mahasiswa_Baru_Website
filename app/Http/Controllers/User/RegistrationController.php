@@ -143,9 +143,6 @@ class RegistrationController extends Controller
             'parent_phone.required' => 'Nomor HP orang tua harus diisi.',
         ]);
 
-        // Map father/mother fields to the existing biodata columns
-        // (database has `parent_name` and `parent_job` columns)
-        // Persist email to user model
         if (!empty($validated['email'])) {
             Auth::user()->update(['email' => $validated['email']]);
         }

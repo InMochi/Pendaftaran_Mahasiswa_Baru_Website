@@ -18,7 +18,6 @@ export default function Biodata({ registration, biodata }) {
         postal_code: biodata?.postal_code || '',
         school_origin: biodata?.school_origin || '',
         graduation_year: biodata?.graduation_year || '',
-        // map parent fields from DB columns
         father_name: biodata?.parent_name || '',
         father_occupation: biodata?.parent_job || '',
         mother_name:  biodata?.parent_name || '',

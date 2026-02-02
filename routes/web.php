@@ -144,6 +144,7 @@ Route::middleware(['auth', 'role:admin'])
         Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement.index');
         Route::post('/announcement/re-register', [AnnouncementController::class, 'reRegister'])->name('announcement.re-register');
 
+
         Route::get('/re-registration', [ReRegistrationController::class, 'index'])->name('re-registration.index');
         Route::post('/re-registration/create', [ReRegistrationController::class, 'create'])->name('re-registration.create');
         Route::post('/re-registration/upload', [ReRegistrationController::class, 'uploadDocument'])->name('re-registration.upload');

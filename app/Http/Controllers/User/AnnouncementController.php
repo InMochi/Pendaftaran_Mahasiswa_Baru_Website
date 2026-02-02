@@ -18,12 +18,11 @@ class AnnouncementController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $registration = $user->getActiveRegistration()
-        ->load(['biodata','announcement','user']);
+        $registration = $user->getActiveRegistration();
 
         if (!$registration) {
             return redirect()->route('dashboard')
-                ->with('error', 'Anda belum memiliki pendaftaran.');
+                ->with('error', 'Belum ada pendaftaran aktif.');
         }
 
         // ❗ WAJIB: test harus selesai
@@ -56,7 +55,7 @@ class AnnouncementController extends Controller
     /**
      * Start re-registration
      */
-    public function reRegister(Request $request)
+   public function reRegister(Request $request)
     {
         $registration = Auth::user()->getActiveRegistration();
 
@@ -84,11 +83,13 @@ class AnnouncementController extends Controller
 
         ReRegistration::create([
             'registration_id' => $registration->id,
-            'status' => 'completed',
+            'announcement_id' => $announcement->id,
+            'status' => 'pending',
             'notes' => 'Daftar ulang berhasil dilakukan pada ' . now()->format('d M Y H:i'),
         ]);
 
-        return redirect()->route('announcement.index')
+        return redirect()->route('re-registration.index')
             ->with('success', 'Daftar ulang berhasil! Silakan tunggu informasi lebih lanjut.');
     }
 }
+
