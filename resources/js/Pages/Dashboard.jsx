@@ -276,7 +276,7 @@ export default function Dashboard() {
                     {/* Info Banner */}
                     <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
                         <div className="flex items-start gap-4">
-                            <div className="flex-shrink-0">
+                            <div className="shrink-0">
                                 <div className="w-12 h-12 bg-linear-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center">
                                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -287,35 +287,35 @@ export default function Dashboard() {
                                 <h3 className="text-xl font-bold text-gray-900 mb-3">Alur Lengkap Pendaftaran</h3>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-sm text-gray-700">
                                     <div className="flex items-center gap-2">
-                                        <span className="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-bold">1</span>
+                                        <span className="shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-bold">1</span>
                                         <span>Isi biodata lengkap</span>
                                     </div>
                                     <div className="flex items-center gap-2">
-                                        <span className="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-bold">2</span>
+                                        <span className="shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-bold">2</span>
                                         <span>Pilih program studi (max 3)</span>
                                     </div>
                                     <div className="flex items-center gap-2">
-                                        <span className="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-bold">3</span>
+                                        <span className="shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-bold">3</span>
                                         <span>Upload dokumen persyaratan</span>
                                     </div>
                                     <div className="flex items-center gap-2">
-                                        <span className="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-bold">4</span>
+                                        <span className="shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-bold">4</span>
                                         <span>Bayar biaya pendaftaran</span>
                                     </div>
                                     <div className="flex items-center gap-2">
-                                        <span className="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-bold">5</span>
+                                        <span className="shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-bold">5</span>
                                         <span>Ikuti tes seleksi online</span>
                                     </div>
                                     <div className="flex items-center gap-2">
-                                        <span className="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-bold">6</span>
+                                        <span className="shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-bold">6</span>
                                         <span>Lihat pengumuman hasil</span>
                                     </div>
                                     <div className="flex items-center gap-2">
-                                        <span className="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xs font-bold">7</span>
+                                        <span className="shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xs font-bold">7</span>
                                         <span className="font-semibold">Daftar ulang (jika diterima)</span>
                                     </div>
                                     <div className="flex items-center gap-2">
-                                        <span className="flex-shrink-0 w-6 h-6 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center text-xs font-bold">8</span>
+                                        <span className="shrink-0 w-6 h-6 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center text-xs font-bold">8</span>
                                         <span className="font-semibold">Cetak kartu mahasiswa 🎓</span>
                                     </div>
                                 </div>
