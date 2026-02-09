@@ -14,6 +14,7 @@ class Announcement extends Model
         'study_program_id',
         'status',
         'total_score',
+        'nim',
         'rank',
         'announced_at',
         'notes',

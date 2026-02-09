@@ -64,13 +64,16 @@ class AnnouncementController extends Controller
                 ->first();
 
             if (!$choice) {
-                continue; // ✅ sekarang SAH
+                continue; 
             }
+
+            $nim = $this->generateNIM($choice->study_program_id, $rank);
 
             Announcement::updateOrCreate(
                 ['registration_id' => $registration->id],
                 [
                     'study_program_id' => $choice->study_program_id,
+                    'nim' => $nim,
                     'rank' => $rank++,
                     'status' => $registration->testSession->total_score >= 40
                         ? Announcement::STATUS_ACCEPTED
@@ -82,6 +85,29 @@ class AnnouncementController extends Controller
         }
 
         return back()->with('success', 'Announcement generated');
+    }
+
+    /**
+     * Generate unique NIM for student
+     * Format: YYYYKKKXXX (Year + Program Code + Sequence)
+     */
+    private function generateNIM($studyProgramId, $sequence)
+    {
+        $studyProgram = StudyProgram::find($studyProgramId);
+        $year = date('y'); // 2 digit year
+        $programCode = str_pad($studyProgramId, 2, '0', STR_PAD_LEFT); // 2 digit program code
+        $seqNumber = str_pad($sequence, 4, '0', STR_PAD_LEFT); // 4 digit sequence
+        
+        $nim = $year . $programCode . $seqNumber;
+        
+        // Ensure NIM is unique
+        while (Announcement::where('nim', $nim)->exists()) {
+            $sequence++;
+            $seqNumber = str_pad($sequence, 4, '0', STR_PAD_LEFT);
+            $nim = $year . $programCode . $seqNumber;
+        }
+        
+        return $nim;
     }
 
 

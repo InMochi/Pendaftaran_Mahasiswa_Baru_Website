@@ -95,6 +95,7 @@ export default function AnnouncementIndex({ periods, announcements = [], stats =
                             <tr className="bg-gray-50 border-b border-gray-200">
                                 <th className="text-left px-5 py-3 font-semibold text-gray-600">Rank</th>
                                 <th className="text-left px-5 py-3 font-semibold text-gray-600">Nama</th>
+                                <th className="text-left px-5 py-3 font-semibold text-gray-600">NIM</th>
                                 <th className="text-left px-5 py-3 font-semibold text-gray-600">Program Studi</th>
                                 <th className="text-left px-5 py-3 font-semibold text-gray-600">Score</th>
                                 <th className="text-left px-5 py-3 font-semibold text-gray-600">Status</th>
@@ -115,7 +116,10 @@ export default function AnnouncementIndex({ periods, announcements = [], stats =
                                             <p className="font-medium text-gray-900">{ann.registration?.biodata?.full_name || '—'}</p>
                                             <p className="text-xs text-gray-500">{ann.registration?.registration_number}</p>
                                         </td>
-                                        <td className="px-5 py-3.5 font-medium text-gray-900">{ann.study_program?.name}</td>
+                                        <td className="px-5 py-3.5 font-mono font-bold text-gray-900">{ann.nim || '—'}</td>
+                                        <td className="px-5 py-3.5">
+                                            <span className="font-medium text-gray-900">{ann.study_program?.name}</span>
+                                        </td>
                                         <td className="px-5 py-3.5">
                                             <span className="font-bold text-lg text-gray-900">
                                                 {ann.registration?.test_session?.total_score || 0}

@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('announcements', function (Blueprint $table) {
             $table->id();
             $table->foreignId('registration_id')->constrained()->onDelete('cascade');
-            $table->foreignId('study_program_id')->nullable()->constrained()->nullOnDelete(); // Prodi yang diterima
+            $table->foreignId('study_program_id')->nullable()->constrained()->nullOnDelete(); 
             $table->enum('status', ['accepted', 'rejected', 'waiting_list'])->default('rejected');
             $table->decimal('total_score', 8, 2)->default(0);
-            $table->integer('rank')->unsigned()->nullable(); // Peringkat
+            $table->integer('rank')->unsigned()->nullable(); 
+            $table->string('nim')->nullable();
             $table->timestamp('announced_at')->nullable();
             $table->text('notes')->nullable();
             $table->timestamps();

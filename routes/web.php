@@ -14,6 +14,8 @@ use App\Http\Controllers\User\RegistrationController;
 use App\Http\Controllers\User\PaymentController;
 use App\Http\Controllers\User\TestController;
 use App\Http\Controllers\User\ReRegistrationController;
+use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\User\StudentCardController;
 
 
 
@@ -127,34 +129,44 @@ Route::middleware(['auth', 'role:admin'])
             Route::post('/registration/submit', [RegistrationController::class, 'submit'])
                 ->name('registration.submit');
 
-        // Payment (User)
-        Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
-        Route::post('/payment', [PaymentController::class, 'store'])->name('payment.store');
-        });
+            // Payment (User)
+            Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
+            Route::post('/payment', [PaymentController::class, 'store'])->name('payment.store');
+            });
 
 
-        // Test
-        Route::get('/test', [TestController::class, 'index'])->name('test.index');
-        Route::post('/test/start', [TestController::class, 'start'])->name('test.start');
-        Route::get('/test/take', [TestController::class, 'take'])->name('test.take');
-        Route::post('/test/answer', [TestController::class, 'answer'])->name('test.answer');
-        Route::post('/test/submit', [TestController::class, 'submit'])->name('test.submit');
-        Route::get('/test/result', [TestController::class, 'result'])->name('test.result');
+            // Test
+            Route::get('/test', [TestController::class, 'index'])->name('test.index');
+            Route::post('/test/start', [TestController::class, 'start'])->name('test.start');
+            Route::get('/test/take', [TestController::class, 'take'])->name('test.take');
+            Route::post('/test/answer', [TestController::class, 'answer'])->name('test.answer');
+            Route::post('/test/submit', [TestController::class, 'submit'])->name('test.submit');
+            Route::get('/test/result', [TestController::class, 'result'])->name('test.result');
 
-        Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement.index');
-        Route::post('/announcement/re-register', [AnnouncementController::class, 'reRegister'])->name('announcement.re-register');
+            Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement.index');
+            Route::post('/announcement/re-register', [AnnouncementController::class, 'reRegister'])->name('announcement.re-register');
 
 
-        Route::get('/re-registration', [ReRegistrationController::class, 'index'])->name('re-registration.index');
-        Route::post('/re-registration/create', [ReRegistrationController::class, 'create'])->name('re-registration.create');
-        Route::post('/re-registration/upload', [ReRegistrationController::class, 'uploadDocument'])->name('re-registration.upload');
-        Route::post('/re-registration/submit', [ReRegistrationController::class, 'submit'])->name('re-registration.submit');
-        Route::get('/re-registration/print-letter', [ReRegistrationController::class, 'printLetter'])->name('re-registration.print-letter');
-    });
+            Route::get('/re-registration', [ReRegistrationController::class, 'index'])->name('re-registration.index');
+            Route::post('/re-registration/create', [ReRegistrationController::class, 'create'])->name('re-registration.create');
+            Route::post('/re-registration/upload', [ReRegistrationController::class, 'uploadDocument'])->name('re-registration.upload');
+            Route::post('/re-registration/submit', [ReRegistrationController::class, 'submit'])->name('re-registration.submit');
+            Route::get('/re-registration/print-letter', [ReRegistrationController::class, 'printLetter'])->name('re-registration.print-letter');
 
-    // Public Routes
-    Route::get('/', function () {
-        return inertia('LandingPage');
-    })->name('home');
+            Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+            Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+            Route::post('/profile/avatar/update', [ProfileController::class, 'updateAvatar'])->name('profile.avatar.update');
+            Route::delete('/profile/avatar/delete', [ProfileController::class, 'deleteAvatar'])->name('profile.avatar.delete');
+            Route::post('/profile/change-password', [ProfileController::class, 'changePassword'])->name('profile.change-password');
+            Route::put('/profile/biodata/update', [ProfileController::class, 'updateBiodata'])->name('profile.biodata.update');
+
+            Route::get('/student-card', [StudentCardController::class, 'index'])->name('student-card.index');
+            Route::get('/student-card/print', [StudentCardController::class, 'print'])->name('student-card.print');
+          });
+
+             // Public Routes
+            Route::get('/', function () {
+                return inertia('LandingPage');
+            })->name('home');
 
     ?>
