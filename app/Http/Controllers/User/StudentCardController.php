@@ -43,14 +43,14 @@ class StudentCardController extends Controller
                 ->with('error', 'Selesaikan daftar ulang terlebih dahulu.');
         }
 
-        // Generate student number if not exists
+     
         if (!$registration->student_number) {
             $studentNumber = $this->generateStudentNumber($registration);
             $registration->update(['student_number' => $studentNumber]);
             $registration->refresh();
         }
 
-        // Generate QR Code
+ 
         $qrCode = $this->generateQrCode($registration);
 
         return Inertia::render('User/StudentCard/Index', [
@@ -61,9 +61,7 @@ class StudentCardController extends Controller
         ]);
     }
 
-    /**
-     * Print student card
-     */
+
     public function print()
     {
         $user = Auth::user()->load([
@@ -111,9 +109,8 @@ class StudentCardController extends Controller
         ]);
     }
 
-    /**
-     * Generate student number
-     */
+
+    //  * Generate student number
     private function generateStudentNumber($registration)
     {
         $year = date('Y');
@@ -135,19 +132,17 @@ class StudentCardController extends Controller
         return $studentNumber;
     }
 
-    /**
-     * Generate QR Code
-     */
+    //  * Generate QR Code
     private function generateQrCode($registration)
     {
         $data = json_encode([
-            'student_number' => $registration->student_number,
+            'student_number' => $registration->announcement->nim,
             'name' => $registration->biodata->full_name,
             'program' => $registration->announcement->studyProgram->name,
             'year' => date('Y'),
         ]);
 
-        // Use SVG format to avoid imagick dependency
+
         $qrCode = (string) QrCode::format('svg')
             ->size(200)
             ->margin(1)
