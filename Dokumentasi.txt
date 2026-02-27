@@ -10,3 +10,4 @@ Panduan Installasi
     -npm run dev
    ] 
 5. Web akan berjalan di port http://127.0.0.1:8000/ seharus nya atau jika memaki Herd bisa langsung paka App_URL yang sudah disediakan
+6. Semoga lancar
