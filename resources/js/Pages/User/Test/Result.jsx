@@ -1,22 +1,18 @@
 import React, { useState } from 'react';
 import { Head, Link } from '@inertiajs/react';
 
-export default function TestResult({ registration, testSession, totalQuestions, answeredQuestions, correctAnswers, accuracy }) {
-    const [showDetails, setShowDetails] = useState(false);
-
-    const isPassed = Number(accuracy) >= 70;
-
-    
+export default function TestResult({ registration, testSession, totalQuestions, answeredQuestions }) {
+    const [showAnswers, setShowAnswers] = useState(false);
 
     return (
         <>
-            <Head title="Hasil Test" />
+            <Head title="Test Selesai" />
             <div className="min-h-screen bg-linear-to-br from-blue-50 via-indigo-50 to-purple-50">
                 <header className="bg-white shadow-sm border-b border-gray-100">
                     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                         <div className="flex items-center justify-between">
                             <div>
-                                <h1 className="text-xl font-bold text-gray-900">Hasil Test</h1>
+                                <h1 className="text-xl font-bold text-gray-900">Test Selesai</h1>
                                 <p className="text-sm text-gray-500">No. {registration.registration_number}</p>
                             </div>
                             <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-800 font-medium">
@@ -27,73 +23,32 @@ export default function TestResult({ registration, testSession, totalQuestions, 
                 </header>
 
                 <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                    {/* Result Card */}
-                    <div className={`rounded-2xl shadow-xl p-8 mb-6 ${
-                        isPassed 
-                            ? 'bg-linear-to-br from-green-500 to-emerald-600' 
-                            : 'bg-linear-to-br from-red-500 to-rose-600'
-                    } text-white text-center`}>
-                        
-                        {/* 2. Emoji & Text menyesuaikan kondisi */}
-                        <div className="text-6xl mb-4">{isPassed ? '🎉' : '😔'}</div>
-                        <h2 className="text-3xl font-bold mb-2">
-                            {isPassed ? 'Selamat!' : 'Belum Berhasil'}
-                        </h2>
-                        
+                    {/* Success Banner - No Score Shown */}
+                    <div className="bg-linear-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-xl p-8 mb-6 text-white text-center">
+                        <div className="text-6xl mb-4">✅</div>
+                        <h2 className="text-3xl font-bold mb-2">Test Berhasil Diselesaikan!</h2>
                         <p className="text-lg opacity-90 mb-6">
-                            {isPassed 
-                                ? 'Anda lulus test dengan akurasi yang luar biasa!' 
-                                : 'Akurasi Anda masih di bawah target. Terus belajar ya!'}
+                            Terima kasih telah menyelesaikan tes seleksi. Jawaban Anda telah tersimpan dengan baik.
                         </p>
-
-                        {/* 3. Menampilkan Akurasi sebagai skor utama */}
                         <div className="inline-block bg-white/20 backdrop-blur-sm rounded-xl px-8 py-4">
-                            <p className="text-sm opacity-90 mb-1">Akurasi Tes</p>
-                            <p className="text-5xl font-bold">{Number(accuracy).toFixed(2)}%</p>
+                            <p className="text-sm opacity-90 mb-1">Status Test</p>
+                            <p className="text-2xl font-bold">SELESAI</p>
                         </div>
                     </div>
 
-                    {/* Stats Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                    {/* Info Cards - Basic Stats Only */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                         <div className="bg-white rounded-xl shadow-md p-6 text-center">
                             <p className="text-sm text-gray-500 mb-1">Total Soal</p>
                             <p className="text-3xl font-bold text-gray-900">{totalQuestions}</p>
                         </div>
                         <div className="bg-white rounded-xl shadow-md p-6 text-center">
-                            <p className="text-sm text-gray-500 mb-1">Dijawab</p>
+                            <p className="text-sm text-gray-500 mb-1">Soal Terjawab</p>
                             <p className="text-3xl font-bold text-blue-600">{answeredQuestions}</p>
                         </div>
                         <div className="bg-white rounded-xl shadow-md p-6 text-center">
-                            <p className="text-sm text-gray-500 mb-1">Benar</p>
-                            <p className="text-3xl font-bold text-green-600">{correctAnswers}</p>
-                        </div>
-                        <div className="bg-white rounded-xl shadow-md p-6 text-center">
-                            <p className="text-sm text-gray-500 mb-1">Akurasi</p>
-                            <p className="text-3xl font-bold text-purple-600">{accuracy}%</p>
-                        </div>
-                    </div>
-
-                    {/* Scores per Category */}
-                    <div className="bg-white rounded-2xl shadow-md p-6 mb-6">
-                        <h3 className="text-lg font-bold text-gray-900 mb-4">Skor per Kategori</h3>
-                        <div className="space-y-3">
-                            {testSession.test_scores?.map((score) => (
-                                <div key={score.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                                    <div className="flex-1">
-                                        <p className="font-semibold text-gray-900">{score.test_category?.name}</p>
-                                        <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
-                                            <div
-                                                className="bg-linear-to-r from-indigo-500 to-purple-500 h-2 rounded-full transition-all"
-                                                style={{ width: `${score.getScorePercentage?.() || 0}%` }}
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="ml-6 text-right">
-                                        <p className="text-2xl font-bold text-gray-900">{score.score}</p>
-                                        <p className="text-xs text-gray-500">Grade: {score.getGrade?.() || '-'}</p>
-                                    </div>
-                                </div>
-                            ))}
+                            <p className="text-sm text-gray-500 mb-1">Status</p>
+                            <p className="text-lg font-bold text-green-600">Completed ✓</p>
                         </div>
                     </div>
 
@@ -103,109 +58,203 @@ export default function TestResult({ registration, testSession, totalQuestions, 
                         <div className="grid grid-cols-2 gap-4 text-sm">
                             <div>
                                 <p className="text-gray-500">Mulai</p>
-                                <p className="font-medium text-gray-900">{new Date(testSession.started_at).toLocaleString('id-ID')}</p>
+                                <p className="font-medium text-gray-900">
+                                    {new Date(testSession.started_at).toLocaleString('id-ID', {
+                                        day: 'numeric',
+                                        month: 'long',
+                                        year: 'numeric',
+                                        hour: '2-digit',
+                                        minute: '2-digit'
+                                    })}
+                                </p>
                             </div>
                             <div>
                                 <p className="text-gray-500">Selesai</p>
-                                <p className="font-medium text-gray-900">{new Date(testSession.finished_at).toLocaleString('id-ID')}</p>
+                                <p className="font-medium text-gray-900">
+                                    {new Date(testSession.finished_at).toLocaleString('id-ID', {
+                                        day: 'numeric',
+                                        month: 'long',
+                                        year: 'numeric',
+                                        hour: '2-digit',
+                                        minute: '2-digit'
+                                    })}
+                                </p>
                             </div>
                             <div>
                                 <p className="text-gray-500">Durasi</p>
                                 <p className="font-medium text-gray-900">{testSession.formatted_time_elapsed || '-'}</p>
                             </div>
                             <div>
-                                <p className="text-gray-500">Status</p>
-                                <p className="font-medium text-gray-900">{testSession.status === 'completed' ? 'Selesai' : 'Timeout'}</p>
+                                <p className="text-gray-500">Metode Selesai</p>
+                                <p className="font-medium text-gray-900">
+                                    {testSession.status === 'completed' ? 'Submit Manual' : 'Auto Submit (Timeout)'}
+                                </p>
                             </div>
                         </div>
                     </div>
 
-                    {/* Answer Details Toggle */}
-                    <div className="bg-white rounded-2xl shadow-md p-6">
+                    {/* Important Notice - No Score Revealed */}
+                    <div className="bg-blue-50 border border-blue-200 rounded-2xl p-6 mb-6">
+                        <div className="flex items-start gap-3">
+                            <svg className="w-6 h-6 text-blue-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <div>
+                                <h4 className="font-bold text-blue-900 mb-2">Informasi Penting</h4>
+                                <ul className="text-sm text-blue-800 space-y-1">
+                                    <li>• Jawaban Anda telah tersimpan dengan aman di sistem</li>
+                                    <li>• Hasil tes akan diproses oleh tim panitia</li>
+                                    <li>• <strong>Nilai dan status kelulusan</strong> akan diumumkan melalui menu <strong>Pengumuman</strong></li>
+                                    <li>• Harap tunggu pengumuman resmi dari panitia Orbyte</li>
+                                    <li>• Pastikan Anda cek menu Pengumuman secara berkala</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Answer Review - WITHOUT Correct/Wrong Indicator */}
+                    <div className="bg-white rounded-2xl shadow-md p-6 mb-6">
                         <div className="flex items-center justify-between mb-4">
-                            <h3 className="text-lg font-bold text-gray-900">Detail Jawaban</h3>
+                            <h3 className="text-lg font-bold text-gray-900">Review Jawaban Anda</h3>
                             <button
-                                onClick={() => setShowDetails(!showDetails)}
+                                onClick={() => setShowAnswers(!showAnswers)}
                                 className="text-sm text-indigo-600 hover:text-indigo-800 font-medium"
                             >
-                                {showDetails ? 'Sembunyikan' : 'Tampilkan'}
+                                {showAnswers ? 'Sembunyikan' : 'Tampilkan'}
                             </button>
                         </div>
 
-                        {showDetails && (
+                        {showAnswers && (
                             <div className="space-y-4">
                                 {testSession.test_answers?.map((answer, idx) => {
                                     const question = answer.test_question;
-                                    const isCorrect = answer.is_correct;
                                     const isMultipleChoice = question.question_type === 'multiple_choice';
 
                                     return (
-                                        <div key={answer.id} className={`p-4 rounded-lg border-2 ${
-                                            isCorrect ? 'border-green-200 bg-green-50' : 
-                                            !isMultipleChoice ? 'border-gray-200 bg-gray-50' :
-                                            'border-red-200 bg-red-50'
-                                        }`}>
-                                            <div className="flex items-start gap-3 mb-2">
-                                                <span className="shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">
+                                        <div key={answer.id} className="p-4 rounded-lg border border-gray-200 bg-gray-50">
+                                            <div className="flex items-start gap-3 mb-3">
+                                                <span className="shrink-0 w-8 h-8 bg-indigo-100 text-indigo-700 rounded-full flex items-center justify-center text-sm font-bold">
                                                     {idx + 1}
                                                 </span>
                                                 <div className="flex-1">
-                                                    <p className="text-sm font-medium text-gray-900 mb-1">{question.question_text}</p>
-                                                    <p className="text-xs text-gray-500">Kategori: {question.test_category?.name} • {question.points} poin</p>
+                                                    <p className="text-sm font-medium text-gray-900 mb-2">{question.question_text}</p>
+                                                    <div className="flex items-center gap-3 text-xs text-gray-500">
+                                                        <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded-full font-medium">
+                                                            {question.test_category?.name}
+                                                        </span>
+                                                        <span>•</span>
+                                                        <span>{question.question_type === 'multiple_choice' ? 'Pilihan Ganda' : 'Essay'}</span>
+                                                    </div>
                                                 </div>
-                                                {isMultipleChoice && (
-                                                    <span className={`shrink-0 text-xl ${isCorrect ? '✅' : '❌'}`}>
-                                                        {isCorrect ? '✅' : '❌'}
-                                                    </span>
-                                                )}
                                             </div>
 
-                                            {isMultipleChoice ? (
-                                                <div className="ml-9 space-y-1 text-sm">
-                                                    <p className="text-gray-700">
-                                                        <span className="font-semibold">Jawaban Anda:</span>{' '}
-                                                        <span className={isCorrect ? 'text-green-700 font-bold' : 'text-red-700 font-bold'}>
-                                                            {answer.getAnswerDisplay?.() || '-'}
-                                                        </span>
-                                                    </p>
-                                                    {!isCorrect && (
-                                                        <p className="text-green-700">
-                                                            <span className="font-semibold">Jawaban Benar:</span>{' '}
-                                                            <span className="font-bold">{answer.getCorrectAnswerDisplay?.() || '-'}</span>
+                                            <div className="ml-11">
+                                                {isMultipleChoice ? (
+                                                    <div className="space-y-2">
+                                                        <p className="text-sm text-gray-700">
+                                                            <span className="font-semibold">Jawaban Anda:</span>
                                                         </p>
-                                                    )}
-                                                    <p className="text-gray-600">
-                                                        <span className="font-semibold">Poin:</span> {answer.points_earned || 0} / {question.points}
-                                                    </p>
-                                                </div>
-                                            ) : (
-                                                <div className="ml-9 text-sm">
-                                                    <p className="text-gray-700">
-                                                        <span className="font-semibold">Jawaban Anda:</span>
-                                                    </p>
-                                                    <p className="mt-1 p-3 bg-white rounded border border-gray-200 text-gray-900">
-                                                        {answer.answer || '(Tidak dijawab)'}
-                                                    </p>
-                                                    <p className="text-gray-500 text-xs mt-2">
-                                                        Essay akan dinilai manual oleh tim
-                                                    </p>
-                                                </div>
-                                            )}
+                                                        <div className="p-3 bg-white rounded-lg border border-indigo-200">
+                                                            <p className="font-medium text-gray-900">
+                                                                {answer.answer ? (
+                                                                    <>
+                                                                        <span className="inline-block w-6 h-6 bg-indigo-100 text-indigo-700 rounded text-center font-bold mr-2">
+                                                                            {answer.answer}
+                                                                        </span>
+                                                                        {answer.answer === 'a' && question.option_a}
+                                                                        {answer.answer === 'b' && question.option_b}
+                                                                        {answer.answer === 'c' && question.option_c}
+                                                                        {answer.answer === 'd' && question.option_d}
+                                                                        {answer.answer === 'e' && question.option_e}
+                                                                    </>
+                                                                ) : (
+                                                                    <span className="text-gray-400 italic">Tidak dijawab</span>
+                                                                )}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                ) : (
+                                                    <div className="space-y-2">
+                                                        <p className="text-sm text-gray-700">
+                                                            <span className="font-semibold">Jawaban Anda:</span>
+                                                        </p>
+                                                        <div className="p-3 bg-white rounded-lg border border-gray-200">
+                                                            <p className="text-gray-900 text-sm whitespace-pre-wrap">
+                                                                {answer.answer || <span className="text-gray-400 italic">Tidak dijawab</span>}
+                                                            </p>
+                                                        </div>
+                                                        <p className="text-xs text-gray-500 italic mt-1">
+                                                            * Jawaban essay akan dinilai oleh tim penguji
+                                                        </p>
+                                                    </div>
+                                                )}
+                                            </div>
                                         </div>
                                     );
                                 })}
                             </div>
                         )}
+
+                        {!showAnswers && (
+                            <div className="text-center py-8 text-gray-500 text-sm">
+                                Klik "Tampilkan" untuk melihat review jawaban Anda
+                            </div>
+                        )}
                     </div>
 
-                    {/* Action Button */}
-                    <div className="mt-6 text-center">
+                    {/* Next Steps */}
+                    <div className="bg-linear-to-r from-green-50 to-emerald-50 rounded-2xl border border-green-200 p-6 mb-6">
+                        <h4 className="font-bold text-green-900 mb-3">Langkah Selanjutnya</h4>
+                        <div className="space-y-2 text-sm text-green-800">
+                            <div className="flex items-start gap-2">
+                                <span className="shrink-0 w-5 h-5 bg-green-600 text-white rounded-full flex items-center justify-center text-xs font-bold">1</span>
+                                <p>Tunggu pengumuman hasil seleksi dari panitia Orbyte</p>
+                            </div>
+                            <div className="flex items-start gap-2">
+                                <span className="shrink-0 w-5 h-5 bg-green-600 text-white rounded-full flex items-center justify-center text-xs font-bold">2</span>
+                                <p>Cek menu <strong>Pengumuman</strong> secara berkala di dashboard</p>
+                            </div>
+                            <div className="flex items-start gap-2">
+                                <span className="shrink-0 w-5 h-5 bg-green-600 text-white rounded-full flex items-center justify-center text-xs font-bold">3</span>
+                                <p>Hasil tes dan status kelulusan akan ditampilkan di menu Pengumuman</p>
+                            </div>
+                            <div className="flex items-start gap-2">
+                                <span className="shrink-0 w-5 h-5 bg-green-600 text-white rounded-full flex items-center justify-center text-xs font-bold">4</span>
+                                <p>Jika diterima, lakukan proses <strong>Daftar Ulang</strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex gap-3">
                         <Link
                             href="/dashboard"
-                            className="inline-block px-8 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition shadow-lg"
+                            className="flex-1 px-8 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition shadow-lg text-center"
                         >
                             Kembali ke Dashboard
                         </Link>
+                        <Link
+                            href="/announcement"
+                            className="flex-1 px-8 py-3 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition shadow-lg text-center"
+                        >
+                            Lihat Pengumuman
+                        </Link>
+                    </div>
+
+                    {/* Contact Info */}
+                    <div className="mt-8 bg-white rounded-2xl border border-gray-200 p-6 text-center">
+                        <p className="text-sm text-gray-600 mb-2">
+                            Ada pertanyaan? Hubungi panitia Orbyte
+                        </p>
+                        <div className="flex items-center justify-center gap-4 text-sm">
+                            <a href="mailto:Orbyte@university.ac.id" className="text-indigo-600 hover:text-indigo-800 font-medium">
+                                📧 Orbyte@university.ac.id
+                            </a>
+                            <span className="text-gray-300">|</span>
+                            <a href="tel:02112345678" className="text-indigo-600 hover:text-indigo-800 font-medium">
+                                📞 (021) 1234-5678
+                            </a>
+                        </div>
                     </div>
                 </main>
             </div>

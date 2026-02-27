@@ -1,0 +1,12 @@
+Panduan Installasi
+
+1. Jangan lupa konfigurasi ulang file ".env" sesuai jenis database yang dipakai
+2. jangan lupa untuk migrate semua database nya [php artisan migrate, php artisan migrate:fresh --seed pada terminal shell atau cmd , disarankan pakai cmd saja]
+3. "Jika Ada beberapa depedencies yang belum terinstall atau hilang, jalankan npm run build"
+4, jalankan Php dan Vite secara bersamaan pada terminal dengan memakai "composer run dev"  
+   atau secara terpisah dengan menjalankan
+   [
+    -php artisan serve 
+    -npm run dev
+   ] 
+5. Web akan berjalan di port http://127.0.0.1:8000/ seharus nya atau jika memaki Herd bisa langsung paka App_URL yang sudah disediakan
